@@ -100,9 +100,9 @@ def testDSL(name){
         }'''.stripIndent()
 }
 
-def testDSL2(name, repoURL, imageName){
+def testDSL2(jobName, appName, imageName){
     jobDsl scriptText: '''
-        pipelineJob('''+"\"${name}\""+''') {
+        pipelineJob('''+"\"${jobName}\""+''') {
             definition{
                 cps{
                     script(\'\'\'
@@ -115,7 +115,7 @@ def testDSL2(name, repoURL, imageName){
                                 stage("Get Sources"){
                                     steps{
                                         script{
-                                            build.gitCheckout('''+"\"${repoURL}\""+''')
+                                            build.gitCheckout(https://github.com/Team-Denver/POC.Service.'''+"\"${appName}\""+'''.git)
                                         }
                                     }
                                 }
