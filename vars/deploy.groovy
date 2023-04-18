@@ -17,7 +17,8 @@ def deployToKubernetes(name, appName){
                                 label "ec2-slave"
                             }
                             stages{
-                                stage("Delete old deployment"){    // this may cause an error because at the first place there are no deployments to be deleted
+                                stage("Delete old deployment"){     
+                             // this may cause an error because at the first place there are no deployments to be deleted
                                     steps{
                                         script{
                                             deploy.deleteDeployment()
