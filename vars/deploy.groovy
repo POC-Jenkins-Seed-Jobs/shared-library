@@ -1,9 +1,10 @@
+    
 def deleteDeployment()
     sh "kubectl delete deployment deployment"
 
 def applyk8sManifest()
     sh "kubectl apply -f deployment.yml"
-
+    
 def deployToKubernetes(name, appName){
     jobDsl scriptText: '''
         pipelineJob('''+"\"${name}\""+''') {
@@ -16,7 +17,7 @@ def deployToKubernetes(name, appName){
                                 label "ec2-slave"
                             }
                             stages{
-                                stage("Delete old deployment"){
+                                stage("Delete old deployment"){    // this may cause an error because at the first place there are no deployments to be deleted
                                     steps{
                                         script{
                                             deploy.deleteDeployment()
@@ -38,3 +39,30 @@ def deployToKubernetes(name, appName){
             }
         }'''.stripIndent()
 }
+
+
+
+// Test Functions 
+
+def updatek8Cluster() {
+   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'nilanjan-aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh '''
+                        aws eks update-kubeconfig --region us-east-1 --name poc-adot-with-eks
+                    '''
+   }
+    
+def destroyk8(appname)
+    {
+        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'nilanjan-aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                sh'''
+                kubectl delete deployment "${appname}"
+                '''
+        }       
+            
+    def applykubectl()
+        {
+             withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'nilanjan-aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                sh'''
+                kubectl apply -f Deployment.yml
+                '''
+             }        
