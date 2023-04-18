@@ -1,4 +1,4 @@
-def applyk8sManifest(manifestPath)
+def applyk8sManifest()
     sh "kubectl apply -f deployment.yml"
 
 def deployToKubernetes(name, appName){
