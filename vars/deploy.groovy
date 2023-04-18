@@ -1,3 +1,6 @@
+def deleteDeployment()
+    sh "kubectl delete deployment deployment"
+
 def applyk8sManifest()
     sh "kubectl apply -f deployment.yml"
 
@@ -13,6 +16,13 @@ def deployToKubernetes(name, appName){
                                 label "ec2-slave"
                             }
                             stages{
+                                stage("Delete old deployment"){
+                                    steps{
+                                        script{
+                                            deploy.deleteDeployment()
+                                        }
+                                    }
+                                }
                                 stage("Deploy to kubernetes"){
                                     steps{
                                         script{
