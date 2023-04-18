@@ -115,7 +115,7 @@ def testDSL2(jobName, appName, imageName){
                                 stage("Get Sources"){
                                     steps{
                                         script{
-                                            build.gitCheckout(https://github.com/Team-Denver/POC.Service.'''+"\"${appName}\""+'''.git)
+                                            build.gitCheckout(https://github.com/Team-Denver/POC.Service.'''+"${appName}"+'''.git)
                                         }
                                     }
                                 }
