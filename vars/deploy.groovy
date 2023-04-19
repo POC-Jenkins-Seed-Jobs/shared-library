@@ -55,7 +55,7 @@ def destroyk8(appname)
     {
         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'nilanjan-aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                 sh'''
-                kubectl delete deployment "${appname}"
+                kubectl delete deployment ${appname}
                 '''
         }       
     }
