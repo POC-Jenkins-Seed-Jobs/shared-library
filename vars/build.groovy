@@ -124,20 +124,7 @@ def testDSL2(jobName, appName, imageName){
                                         }
                                     }
                                 }
-                                stage("Install Node.Js"){
-                                    steps{
-                                        script{
-                                            build.installNodeJs()
-                                        }
-                                    }
-                                }
-                                stage("Install NPM"){
-                                    steps{
-                                        script{
-                                            build.installNpm()
-                                        }
-                                    }
-                                }
+                                
                                 stage("Build"){
                                     steps{
                                         script{
