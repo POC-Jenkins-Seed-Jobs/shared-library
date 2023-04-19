@@ -23,11 +23,11 @@ def nodeJsTest(){
 
 def dockerBuildAndPush(dockerRegistry,credentialsId,imageName){
     withDockerRegistry(credentialsId: "${credentialsId}", url: "${dockerRegistry}") {
-        sh ```
+        sh '''
             epochTime=$((date +%s)
-            docker build -t "${imageName}":${epochTime} .
-            docker push "${imageName}":${epochTime}
-        ```
+            docker build -t ${imageName}:${epochTime} .
+            docker push ${imageName}:${epochTime}
+        '''
         // sh "docker build -t ${imageName}:${BUILD_NUMBER} ."
         // sh "docker push ${imageName}:${BUILD_NUMBER}"
     }
