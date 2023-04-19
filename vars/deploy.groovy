@@ -1,9 +1,9 @@
-def deleteDeployment()
+def deleteDeployment(){
     sh "kubectl delete deployment deployment"
-
-def applyk8sManifest()
+}
+def applyk8sManifest(){
     sh "kubectl apply -f deployment.yml"
-    
+}
 def deployToKubernetes(name, appName){
     jobDsl scriptText: '''
         pipelineJob('''+"\"${name}\""+''') {
