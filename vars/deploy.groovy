@@ -1,4 +1,3 @@
-    
 def deleteDeployment()
     sh "kubectl delete deployment deployment"
 
