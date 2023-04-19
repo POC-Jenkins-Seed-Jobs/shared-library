@@ -51,7 +51,7 @@ def updatek8Cluster() {
                         aws eks update-kubeconfig --region us-east-1 --name poc-adot-with-eks
                     '''
    }
-    
+} 
 def destroyk8(appname)
     {
         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'nilanjan-aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
@@ -59,7 +59,8 @@ def destroyk8(appname)
                 kubectl delete deployment "${appname}"
                 '''
         }       
-            
+    }
+    
     def applykubectl()
         {
              withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'nilanjan-aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
@@ -67,7 +68,7 @@ def destroyk8(appname)
                 kubectl apply -f Deployment.yml
                 '''
              }
-            
+        } 
 def testDeploy(jobName, appName){
     jobDsl scriptText: '''
         pipelineJob('''+"\"${jobName}\""+''') {
