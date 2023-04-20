@@ -25,11 +25,14 @@ def deployToKubernetes(name, appName){
                                     }
                                 }
                                 stage("Deploy to kubernetes"){
+
+                                   
                                     steps{
                                         script{
                                             deploy.applyk8sManifest()
                                         }
                                     }
+                                    
                                 }
                             }
                         }
@@ -94,6 +97,13 @@ def testDeploy(jobName, appName){
                                 }
                                }
                                }
+                                    steps{
+                                        configFileProvider([configFile(fileID: 'deployment.yml', variable: 'DEPLOYMENT.FILE')])
+                                            sh '''
+                                                cat ${DEPLOYMENT_FILE} | envsubst | kubectl apply -f -
+                                            '''
+                                        }
+                                    }
                                 stage("Apply deployments"){
                                       steps{
                                          script{
