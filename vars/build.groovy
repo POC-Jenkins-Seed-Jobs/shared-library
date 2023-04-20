@@ -27,6 +27,9 @@ def dockerBuildAndPush(dockerRegistry,credentialsId,imageName){
             epochTime=$(date +%s)
             docker build -t '''+"${imageName}"+''':${epochTime} .
             docker push '''+"${imageName}"+''':${epochTime}
+            docker image tag '''+"${imageName}"+''':${epochTime} '''+"${imageName}"+''':latest
+            docker push '''+"${imageName}"+''':latest
+            
         '''
         // sh "docker build -t ${imageName}:${BUILD_NUMBER} ."
         // sh "docker push ${imageName}:${BUILD_NUMBER}"
