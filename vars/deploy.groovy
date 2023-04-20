@@ -92,10 +92,10 @@ def testDeploy(jobName, appName){
                                 
                                  stage("Delete deployment"){
                                     steps{
-                                    script{
-                                    deploy.destroyk8("${appName}")
-                                }
-                               }
+                                        script{
+                                            deploy.destroyk8("${appName}")
+                                        }
+                                    }
                                }
                                     steps{
                                         configFileProvider([configFile(fileID: 'deployment.yml', variable: 'DEPLOYMENT.FILE')])
@@ -105,12 +105,12 @@ def testDeploy(jobName, appName){
                                         }
                                     }
                                 stage("Apply deployments"){
-                                      steps{
+                                    steps{
                                          script{
-                                     deploy.applykubectl()
-                                 }
-                              }
-                             }
+                                            deploy.applykubectl()
+                                         }
+                                    }
+                                }
                                 
                             }
                             
