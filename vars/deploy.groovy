@@ -96,7 +96,7 @@ def testDeploy(jobName, appName){
                                             deploy.destroyk8("${appName}")
                                         }
                                     }
-                               }
+                                 
                                     steps{
                                         configFileProvider([configFile(fileID: 'deployment.yml', variable: 'DEPLOYMENT.FILE')])
                                             sh '''
@@ -104,6 +104,7 @@ def testDeploy(jobName, appName){
                                             '''
                                         }
                                     }
+                                }
                                 stage("Apply deployments"){
                                     steps{
                                          script{
