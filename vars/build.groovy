@@ -21,14 +21,7 @@ def nodeJsTest(){
     echo "Test Successfully !"
 }
 
-def TriggerAnotherJob(AppName)
-{
-   
-    build job : "/job-B"
-    echo "${AppName}"
-    
-   
-}
+
     
 def dockerBuildAndPush(dockerRegistry,credentialsId,imageName){
     withDockerRegistry(credentialsId: "${credentialsId}", url: "${dockerRegistry}") {
