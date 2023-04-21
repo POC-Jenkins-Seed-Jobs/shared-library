@@ -24,7 +24,8 @@ def nodeJsTest(){
 def TriggerAnotherJob(AppName)
 {
     sh '''
-    build job : /'''+"${AppName}"+ ''' 
+   // build job : /'''+"${AppName}"+ '''
+     build job :'''+/+"\"${AppName}\""+'''
     
    '''
 }
