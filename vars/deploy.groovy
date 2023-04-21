@@ -97,13 +97,7 @@ def testDeploy(jobName, appName){
                                         }
                                     }
                                  
-                                    steps{
-                                        configFileProvider([configFile(fileID: 'deployment.yml', variable: 'DEPLOYMENT.FILE')])
-                                            sh '''
-                                                cat ${DEPLOYMENT_FILE} | envsubst | kubectl apply -f -
-                                            '''
-                                        }
-                                    }
+
                                 }
                                 stage("Apply deployments"){
                                     steps{
