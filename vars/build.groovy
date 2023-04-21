@@ -24,7 +24,7 @@ def nodeJsTest(){
 def TriggerAnotherJob(AppName)
 {
    
-    build job : /job-B
+    build job : "/job-B"
     echo "${AppName}"
     
    
