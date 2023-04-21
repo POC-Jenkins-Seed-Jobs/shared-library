@@ -24,7 +24,7 @@ def nodeJsTest(){
 def TriggerAnotherJob(AppName)
 {
    
-    build job :"${AppName}"
+    build job :/"${AppName}"
     
    
 }
