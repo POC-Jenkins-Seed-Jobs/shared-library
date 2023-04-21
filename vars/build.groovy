@@ -24,8 +24,7 @@ def nodeJsTest(){
 def TriggerAnotherJob(AppName)
 {
     sh '''
-    build job : /"${AppName}"
-    '''
+    build job : /'''+"${AppName}"+ '''
 }
     
 def dockerBuildAndPush(dockerRegistry,credentialsId,imageName){
