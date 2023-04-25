@@ -31,6 +31,8 @@ def dockerBuildAndPush(dockerRegistry,credentialsId,imageName){
             docker push '''+"${imageName}"+''':${epochTime}
             docker image tag '''+"${imageName}"+''':${epochTime} '''+"${imageName}"+''':latest
             docker push '''+"${imageName}"+''':latest
+            docker rmi '''+"${imageName}"+''':${epochTime}
+            docker rmi '''+"${imageName}"+''':latest
             
         '''
         // sh "docker build -t ${imageName}:${BUILD_NUMBER} ."
