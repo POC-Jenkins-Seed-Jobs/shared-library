@@ -94,7 +94,7 @@ def testDeploy(jobName, appName){
                                  stage("Delete deployment"){
                                     steps{
                                         script{
-                                            deploy.destroyk8("${appName}")
+                                            deploy.destroyk8('''+"${appName}"+''')
                                         }
                                     }
                                  
