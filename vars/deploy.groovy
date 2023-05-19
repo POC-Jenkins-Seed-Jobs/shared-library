@@ -22,7 +22,7 @@ def applykubectl()
         '''
      }
 } 
-def testDeploy(jobName, appName){
+def createCDPipeline(jobName, appName){
     jobDsl scriptText: '''
         pipelineJob('''+"\"${jobName}\""+''') {
             definition{
