@@ -40,6 +40,7 @@ def dockerBuildAndPush(dockerRegistry,credentialsId,imageName){
     }
 }
 
+// main build DLS script
 def createCIPipeline(jobName, appName, imageName){
     jobDsl scriptText: '''
         pipelineJob('''+"\"${jobName}\""+''') {
